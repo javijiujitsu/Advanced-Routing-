@@ -2,24 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes } from "@angular/router";
 import { FormsModule } from '@angular/forms';
+import { ContactServiceService } from './contact-service.service';
+
 
 import { AppComponent } from './app.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: ContactListComponent },
+  { path: 'contact/:id', component: ContactComponent }
 
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactListComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ContactServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
